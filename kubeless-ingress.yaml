@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: cognito-ingress
+spec:
+  rules:
+    - host: cognito.<minikube-ip>.nip.io
+      http: 
+        paths:
+          - path: /list
+            backend:
+              serviceName: cognito-list # service name
+              servicePort: 8080 # service port
+          - path: /delete
+            backend:
+              serviceName: cognito-delete # service name
+              servicePort: 8080 # service port
